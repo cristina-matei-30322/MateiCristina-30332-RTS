@@ -6,7 +6,7 @@ public class Fir extends Thread implements Observable {
     int id;
     int processorLoad;
     List<Observer> observers = new ArrayList<>();
-    //obervabili is firele de executie
+    // List to hold observer instances
     Fir(int id,int priority, int procLoad){
         this.id=id;
         this.processorLoad=procLoad;
@@ -15,13 +15,15 @@ public class Fir extends Thread implements Observable {
     public void run(){
         int c=0;
         while(c<1000){
+            // Nested loop to simulate processor load
             for(int j=0;j<this.processorLoad;j++){
                 j++;j--;
             }
             c++;
-            notifyObservers(id,c); //notifici alt fir de executie
+            // Notifying observers about the current state
+            notifyObservers(id,c);
             try{
-                Thread.sleep(10);
+                Thread.sleep(10); // Putting the thread to sleep for a short duration
             }
             catch (InterruptedException e)
             {
@@ -29,7 +31,6 @@ public class Fir extends Thread implements Observable {
             }
         }
     }
-
 
     @Override
     public void addObserver(Observer observer) {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Window extends JFrame implements Observer {
-    //observatul este fereastra
+    // List to hold JProgressBar instances
     ArrayList<JProgressBar> bars=new ArrayList<JProgressBar>();
     public Window(int nrThreads) {
         setLayout(null);
@@ -23,7 +23,7 @@ public class Window extends JFrame implements Observer {
     public void setProgressValue(int id,int val){
         bars.get(id).setValue(val);
     }
-    //actualizezi valoarea -> nu cred ca folosesti niciunde functia asta
+    // Method to set progress value of a specific progress bar
     public void update(int id, int value)
     {
         SwingUtilities.invokeLater(() -> {
